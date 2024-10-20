@@ -16,10 +16,10 @@ public class PlayerMoveState : PlayerState
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.N))
-        {
+        player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
+        
+        if(xInput == 0)
             stateMachine.ChangeState(player.idleState);
-        }
     }
 
     public override void Exit()
