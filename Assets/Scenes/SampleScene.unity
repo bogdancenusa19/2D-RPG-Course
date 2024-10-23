@@ -597,7 +597,11 @@ MonoBehaviour:
     m_Bits: 64
   moveSpeed: 1.5
   idleTime: 2
+  battleTime: 3
+  distanceToNeglectPlayer: 3.1
   attackDistance: 1.5
+  attackCooldown: 0.4
+  lastTimeAttacked: 0
 --- !u!4 &500564698
 Transform:
   m_ObjectHideFlags: 0
@@ -627,6 +631,7 @@ GameObject:
   - component: {fileID: 516104561}
   - component: {fileID: 516104563}
   - component: {fileID: 516104562}
+  - component: {fileID: 516104564}
   m_Layer: 7
   m_Name: Animator
   m_TagString: Untagged
@@ -722,6 +727,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &516104564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516104560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125c020a2103b4e4cb508a08395a0d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
