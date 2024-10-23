@@ -9,11 +9,15 @@ public class Enemy : Entity
     
     [Header("Move Info")] 
     public float moveSpeed;
-
     public float idleTime;
+    public float battleTime;
+    public float distanceToNeglectPlayer;
 
     [Header("Attack Info")] 
     public float attackDistance;
+
+    public float attackCooldown;
+    [HideInInspector] public float lastTimeAttacked;
     
     public EnemyStateMachine stateMachine { get; private set; }
     protected override void Awake()
@@ -30,6 +34,8 @@ public class Enemy : Entity
         stateMachine.currentState.Update();
     }
 
+    public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+
     public virtual RaycastHit2D IsPlayerDetected() =>
         Physics2D.Raycast(wallCheck.position,Vector2.right * facingDir, 50, whatIsPlayer);
 
@@ -37,5 +43,8 @@ public class Enemy : Entity
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + attackDistance * facingDir, transform.position.y));
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + distanceToNeglectPlayer * facingDir, transform.position.y));
+        
     }
 }
