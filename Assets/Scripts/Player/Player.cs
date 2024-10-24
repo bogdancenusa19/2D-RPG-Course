@@ -7,6 +7,7 @@ public class Player: Entity
 {
     [Header("Attack Info")] 
     public float[] attackMovement;
+    
     public bool isBusy { get; private set; }
     [Header("Move Info")] 
     public float moveSpeed = 12f;
