@@ -28,7 +28,7 @@ public class SkeletonBattleState : EnemyState
     {
         base.Update();
        
-        if (enemyBase.IsPlayerDetected())
+        if (enemy.IsPlayerDetected())
         {
             stateTimer = enemy.battleTime;
             
@@ -40,8 +40,10 @@ public class SkeletonBattleState : EnemyState
         }
         else
         {
-            if(stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > enemy.distanceToNeglectPlayer)
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > enemy.distanceToNeglectPlayer)
+            {
                 stateMachine.ChangeState(enemy.idleState);
+            }
                 
         }
         

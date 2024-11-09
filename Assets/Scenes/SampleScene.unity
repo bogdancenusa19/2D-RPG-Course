@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 233603753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5059998, y: 0.8399999, z: -10}
+  m_LocalPosition: {x: 13.846001, y: 0.8399999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 350090540}
   - component: {fileID: 350090543}
   - component: {fileID: 350090542}
+  - component: {fileID: 350090544}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -302,6 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eedc1618bf2fe84eafdc534c53c71dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackDirection: {x: 0, y: 0}
+  knockbackDuration: 0
   attackCheck: {fileID: 1983301256}
   attackCheckRadius: 0.74
   groundCheck: {fileID: 1894212445}
@@ -329,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 350090539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.09, y: -2.28, z: 0}
+  m_LocalPosition: {x: 15.430001, y: -2.4999998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -401,6 +404,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.10109016, y: -0.28642213}
   m_Size: {x: 0.7358771, y: 2.0614464}
   m_Direction: 0
+--- !u!114 &350090544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350090539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792b35dc08d3a814d9b98806c94ddefb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitMat: {fileID: 2100000, guid: 7d397f3971db9a94fb42d00983ad317d, type: 2}
 --- !u!1 &481392291
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +513,7 @@ GameObject:
   - component: {fileID: 500564697}
   - component: {fileID: 500564696}
   - component: {fileID: 500564695}
+  - component: {fileID: 500564699}
   m_Layer: 7
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -513,7 +530,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 500564694}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0d1f700ae6c30354c9ecb6c985cb7d34, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -564,7 +581,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 12
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -588,6 +605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b7c7d3331eee54fa55ff639a35c5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackDirection: {x: 7, y: 12}
+  knockbackDuration: 0.07
   attackCheck: {fileID: 1274700389}
   attackCheckRadius: 0.8
   groundCheck: {fileID: 239450038}
@@ -600,9 +619,11 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  stunnedDuration: 1
+  stunDirection: {x: 10, y: 12}
   moveSpeed: 1.5
   idleTime: 2
-  battleTime: 3
+  battleTime: 5
   distanceToNeglectPlayer: 3.1
   attackDistance: 1.5
   attackCooldown: 0.4
@@ -616,7 +637,7 @@ Transform:
   m_GameObject: {fileID: 500564694}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.94, y: -2.15, z: 0}
+  m_LocalPosition: {x: 21.28, y: -2.37, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -626,6 +647,19 @@ Transform:
   - {fileID: 1274700389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &500564699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500564694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792b35dc08d3a814d9b98806c94ddefb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitMat: {fileID: 2100000, guid: 7d397f3971db9a94fb42d00983ad317d, type: 2}
 --- !u!1 &516104560
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +911,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5059998, y: 0.8399999, z: -10}
+  m_LocalPosition: {x: 13.846001, y: 0.8399999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
